@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   resources :topics
 
   root 'top#index'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
