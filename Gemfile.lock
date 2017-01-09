@@ -472,6 +472,7 @@ DEPENDENCIES
   erd
   faker
   fog
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

@@ -1,8 +1,12 @@
 <li class="topic row">
   <%= link_to topic_path(topic) do %>
+      <p><span class="topic-avatar"><%= profile_img(topic.user) %></span><%= topic.user.name %></p>
       <p><%= topic.content %></p>
-      <p><%= topic.user.name %></p>
   <% end %>
-  <%= link_to '編集', edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
-  <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+  <% if topic.user.id === current_user.id %>
+      <div class="text-right">
+        <%= link_to '編集', edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      </div>
+  <% end %>
 </li>
