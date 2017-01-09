@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  # root 'topics#index'
   root 'top#index'
 
   if Rails.env.development?

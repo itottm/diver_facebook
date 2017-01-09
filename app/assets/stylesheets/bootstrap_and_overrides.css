@@ -76,6 +76,12 @@
     }
 }
 @media (max-width: 767px) {
+    .container-fluid {
+        display: block;
+    }
+    .navbar-collapse {
+        margin-top: 5px;
+    }
     .navbar-brand {
         margin-left: 15px;
     }

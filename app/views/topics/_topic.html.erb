@@ -1,7 +1,11 @@
 <li class="topic row">
-  <%= link_to topic_path(topic) do %>
+  <%= link_to user_path(topic.user) do %>
       <p><span class="topic-avatar"><%= profile_img(topic.user) %></span><%= topic.user.name %></p>
+  <% end %>
+  <%= link_to topic_path(topic), class: 'topic-link' do %>
       <p><%= topic.content %></p>
+      <p><%= topic.created_at %> / コメント（<%= topic.comments.count %>）</p>
+      <p class="text-center">>> 詳細をみる</p>
   <% end %>
   <% if topic.user.id === current_user.id %>
       <div class="text-right">
