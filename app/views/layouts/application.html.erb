@@ -31,7 +31,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
               <li>
-                <%= link_to edit_user_registration_path do %>
+                <%= link_to user_path(current_user) do %>
                     <span class="nav-avatar"><%= profile_img(current_user) %></span><%= current_user.name %>
                 <% end %>
               </li>
