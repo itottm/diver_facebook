@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:destroy]
+
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
     @comment = current_user.comments.build(comment_params)
@@ -17,8 +19,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @comment.destroy
+        format.js { render :index }
+      else
+        format.html { redirect_to(topics_path,) }
+      end
+    end
+  end
+
   private
     def comment_params
       params.require(:comment).permit(:topic_id, :content)
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
 end
