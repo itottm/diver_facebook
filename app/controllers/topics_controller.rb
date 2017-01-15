@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
+    @topic = Topic.new
     @topics = Topic.index_all.page(params[:page])
   end
 
@@ -11,17 +12,17 @@ class TopicsController < ApplicationController
     @comments = @topic.comments
   end
 
-  def new
-    @topic = Topic.new
-  end
-
   def create
     @topic = Topic.new(topics_params)
     @topic.user_id = current_user.id
-    if @topic.save
-      redirect_to topics_path, notice: 'トピックを作成しました！'
-    else
-      render 'new'
+    @topics = Topic.index_all.page(params[:page])
+
+    respond_to do |format|
+      if @topic.save
+        format.js { render :index }
+      else
+        format.html { redirect_to(topics_path,) }
+      end
     end
   end
 
