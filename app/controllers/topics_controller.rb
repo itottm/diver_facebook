@@ -19,9 +19,10 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.js { render :index }
+        format.html { redirect_to topics_path, notice: 'トピックを投稿しました！' }
+        format.js   { render :index }
       else
-        format.html { redirect_to(topics_path,) }
+        format.html { redirect_to(topics_path) }
       end
     end
   end

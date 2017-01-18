@@ -2,7 +2,7 @@ $(document).ready ->
   $("#topics .page").infinitescroll
     loading: {
       msgText: '',
-      finishedMsg: '',
+      finishedMsg: ''
     }
     dataType: 'js',
     animate: true,
