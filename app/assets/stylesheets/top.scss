@@ -90,12 +90,19 @@ header {
   width: 25%;
 }
 
-.about {
+.top-page {
   background-color: white;
   color: #333;
-  /*padding-top: 20px;*/
-  /*padding-bottom: 40px;*/
-  padding: 80px;
+  padding: 20px 40px;
+}
+
+.btn-wrapper {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .btn {
+    border: 1px solid #ddd;
+  }
 }
 
 footer {
