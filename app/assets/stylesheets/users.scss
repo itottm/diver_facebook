@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user-img{
+  height:48px;
+  img {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.user-action {
+  height:80px;
+  margin-bottom: 10px;
+}
+
+.single-line{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}

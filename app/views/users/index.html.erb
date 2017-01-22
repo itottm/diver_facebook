@@ -2,15 +2,19 @@
   <h2>ユーザー一覧</h2>
   <% @users.each do |user| %>
       <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <%= profile_img(user) %>
-        <p><%= link_to user.name, user_path(user) %></p>
-        <p><%= user.email %></p>
-        <% unless user.id === current_user.id %>
-            <div class="item">
-              <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-            </div>
-            <p><%= render partial: 'follow_form', locals: { user: user } if signed_in?  %></p>
-        <% end %>
+        <div class="user-img"><%= profile_img(user) %></div>
+        <p class="single-line"><%= link_to user.name, user_path(user) %></p>
+        <p class="single-line"><%= user.email %></p>
+        <div class="user-action">
+          <% unless user.id === current_user.id %>
+              <div class="item">
+                <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              </div>
+              <p><%= render partial: 'follow_form', locals: { user: user } if signed_in?  %></p>
+          <% else %>
+              <p><%= link_to '編集する', edit_user_registration_path %></p>
+          <% end %>
+        </div>
       </div>
   <% end %>
 </div>
