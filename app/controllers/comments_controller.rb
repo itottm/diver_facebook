@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
@@ -16,6 +16,18 @@ class CommentsController < ApplicationController
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit
+    @topic = @comment.topic
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to topic_path(@comment.topic), notice: 'コメントを更新しました！'
+    else
+      render action: 'edit'
     end
   end
 
