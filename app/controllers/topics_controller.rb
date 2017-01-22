@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def show
     @comment = @topic.comments.build
-    @comments = @topic.comments
+    @comments = @topic.comments.order(created_at: :asc)
   end
 
   def create
