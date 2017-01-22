@@ -4,7 +4,7 @@ lock '3.6.0'
 set :application, 'diver_facebook'
 
 # cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/itottm/diver_facebook'
+set :repo_url, 'git@github.com:itottm/diver_facebook.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, ENV['BRANCH'] || 'master'
